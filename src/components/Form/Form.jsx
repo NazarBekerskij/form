@@ -6,6 +6,8 @@ class Form extends Component {
         lastName: "",
         secondName: "",
         email: "",
+        courses: "",
+        agre: ""
     }
 
 
@@ -13,12 +15,13 @@ class Form extends Component {
     handleSubmit = (evt) => {
         evt.preventDefault()
 
-        const {lastName, secondName, email} = this.state
+        const {lastName, secondName, email, courses} = this.state
 
         const data = {
             lastName,
             secondName,
             email,
+            courses,
         }
         console.log(data);
 
@@ -41,13 +44,23 @@ class Form extends Component {
 
 
     render(){
-        const {lastName, secondName, email} = this.state
+        const {lastName, secondName, email, courses} = this.state
 
         return(
             <form onSubmit={this.handleSubmit}>
                 <input onChange={this.handleChange} value={lastName} type="name" name="lastName" placeholder="enter name"/>
                 <input onChange={this.handleChange} value={secondName} type="name" name="secondName" placeholder="enter second name"/>
                 <input onChange={this.handleChange} value={email} type="email" name="email" placeholder="enter email"/>
+                <label> HTML
+                    <input onChange={this.handleChange} checked={courses === "html"} value="html" type="radio" name="courses" />
+                </label>
+                  <label> CSS
+                    <input onChange={this.handleChange} checked={courses === "css"} value="css" type="radio" name="courses" />
+                </label>
+                  <label> REACT
+                    <input onChange={this.handleChange} checked={courses === "react"} value="react" type="radio" name="courses" />
+                </label>
+                <input type="checkbox" name="" />
                 <button type="submit">відправити</button>
             </form>
         )
